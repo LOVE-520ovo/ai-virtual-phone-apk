@@ -14,8 +14,20 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("fixed") {
+            storeFile = file("../signing/aivp.keystore")
+            storePassword = "aivp123456"
+            keyAlias = "aivp"
+            keyPassword = "aivp123456"
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("fixed")
+        }
         release {
+            signingConfig = signingConfigs.getByName("fixed")
             isMinifyEnabled = false
         }
     }
