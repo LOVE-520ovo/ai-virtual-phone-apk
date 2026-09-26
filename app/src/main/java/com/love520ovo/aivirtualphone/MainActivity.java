@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 
         webView.setDownloadListener(new DownloadListener() {
             @Override
-            public void download(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
                 if (url.startsWith("blob:")) {
                     final String fname = guessFilename(contentDisposition, mimetype);
                     String js = "(function(){var x=new XMLHttpRequest();x.open('GET'," + jsStr(url) + ",true);x.responseType='blob';"
